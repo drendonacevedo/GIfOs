@@ -15,12 +15,12 @@ let logoPagina = document.getElementById('logoPagina');
 temaClaro.addEventListener('click', function(){
 body.classList.remove('dark')
 body.classList.add('tema-claro');
-logoPagina.setAttribute('src', '/assets/gifOF_logo.png')});
+logoPagina.setAttribute('src', './assets/gifOF_logo.png')});
 
 temaOscuro.addEventListener('click', function(){
 body.classList.add('dark')
 body.classList.remove('tema-claro');
-logoPagina.setAttribute('src', '/assets/gifOF_logo_dark.png')})
+logoPagina.setAttribute('src', './assets/gifOF_logo_dark.png')})
 
 
 
@@ -69,7 +69,7 @@ const drawGifsSugerencias = (listGifs, section) => {
         let indexGif = title.indexOf('GIF');
         let titleDef = title.slice(0,indexGif);
         const tagImage = `<div>
-        <p>#${titleDef}<img src='/assets/button3.svg'></p>
+        <p>#${titleDef}<img src='./assets/button3.svg'></p>
         <img src=${urlImage} alt=""><button id='verMas'>Ver Más...</button></img>
         </div>`
         ;

@@ -45,7 +45,7 @@ botonCapturar.addEventListener('click', function () {
     botonCapturar.style.display = 'none';
     botonDetener.style.display ='flex';
     contador.style.visibility = 'visible';
-    barraCaptura.innerHTML = '<img src="/assets/button3.svg" alt="button3">Capturando Tu Guifo';
+    barraCaptura.innerHTML = '<img src="./assets/button3.svg" alt="button3">Capturando Tu Guifo';
     startRecord();
 });
     
@@ -134,7 +134,7 @@ function uploadSucess(){
     divCaptura.style.height = "391px";
     divCaptura.style.width = "721px";
     divCaptura.style.display = "flex";
-    barraCaptura.innerHTML = '<img src="/assets/button3.svg" alt="button3">Guifo Subido Con Éxito';
+    barraCaptura.innerHTML = '<img src="./assets/button3.svg" alt="button3">Guifo Subido Con Éxito';
     barraCaptura.style.width = "715px";
     preview.style.display ='flex';
     preview.style.width ='365px';
