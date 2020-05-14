@@ -51,6 +51,7 @@ function getTrendingResults() {
     console.log(data);
     drawGifsSugerencias(data.data.slice(0,4), "sugeridos");
     drawGifsTendencias(data.data.slice(4,24), "tendencias");
+    
     })
     .catch((error) => {
     console.error(error);
@@ -63,14 +64,14 @@ function getTrendingResults() {
 const drawGifsSugerencias = (listGifs, section) => {
     let idSection = document.getElementById(section);
     idSection.innerHTML = "";
-    listGifs.forEach(gif => {
+    listGifs.forEach((gif,i) => {
         let urlImage = gif.images.fixed_height.url;
         let title = gif.title.replace(/ /g, "");
         let indexGif = title.indexOf('GIF');
         let titleDef = title.slice(0,indexGif);
         const tagImage = `<div>
-        <p>#${titleDef}<img src='./assets/button3.svg'></p>
-        <img src=${urlImage} alt=""><button id='verMas'>Ver Más...</button></img>
+        <p id='titleDef${i}'>#${titleDef}<img src='./assets/button3.svg'></p>
+        <img src=${urlImage} alt=''><button type='button' id='verMas' onclick=getSearchResults2('${titleDef.slice(0,5)}')>Ver Más...</button></img>
         </div>`
         ;
         idSection.innerHTML += tagImage;
@@ -101,6 +102,7 @@ function getSearchResults() {
     botonBusquedaResultados.forEach(e =>{
         e.style.visibility ='visible';
     })
+
     var valorBusqueda = document.getElementById('busqueda').value;
     var search = valorBusqueda;
     const found =
@@ -131,6 +133,27 @@ const drawGifsBusqueda = (listGifs, section) => {
         idSection.innerHTML += tagImage;
     });
 };
+
+//Imprimir busqueda boton VerMas
+
+function getSearchResults2(title){
+    console.log(title);
+    const found =
+    fetch('https://api.giphy.com/v1/gifs/search?q=' + title +
+    '&api_key=' + apiKey)
+    .then((response) => {
+    return response.json()
+    }).then(data => {
+    console.log(data);
+    drawGifsBusqueda(data.data.slice(0,4), "resultadoBusqueda");
+    })
+    .catch((error) => {
+    console.log(error + 'hola');
+    return error
+    })
+    return found;
+}
+
 
 
 
